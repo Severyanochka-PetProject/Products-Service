@@ -1,7 +1,7 @@
 import { Product } from '../domain/Product';
 import  {IProductRepository} from '../interfaces/ProductRepository.interface';
 
-class ProductRepository implements IProductRepository {
+export default class ProductRepository implements IProductRepository {
     getProducts() {
         throw new Error('Method not implemented.');
     }
