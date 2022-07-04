@@ -1,0 +1,8 @@
+# Files
+.env
+error.log
+combined.log
+
+# Folders
+node_modules
+dist
