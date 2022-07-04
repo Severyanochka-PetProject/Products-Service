@@ -6,17 +6,16 @@ import "reflect-metadata";
 
 import DataBase from './db/connect';
 import logger from './logger/logger';
+import router from './routes/index';
 
 const app = express();
 const PORT = process.env.PORT || '5515';
 
-app.get('/', (req: Request, res: Response) => {
-    res.send("Hello test");
-});
-
 DataBase.initialize()
     .then(() => {
         logger.info(`[OK] DataBase initialized`);
+
+        app.use(router);
 
         app.listen(PORT, () => {
             logger.info(`[OK] Server is running on PORT ${ PORT }`)
