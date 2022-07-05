@@ -9,11 +9,11 @@ export interface ICategoryRepository {
     /**
      * Добавить категорию
      */
-    addCategory(category: Category);
+    addCategory(category: Category): Promise<Boolean>;
 
     /**
      * Удалить категорию по id
      * @param id_category
      */
-    removeCategory(id_category: number);
+    removeCategory(id_category: number): Promise<Boolean>;
 }
