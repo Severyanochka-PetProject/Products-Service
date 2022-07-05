@@ -1,7 +1,8 @@
 import { Category } from "../domain/Category";
-import { ICategoryRepository } from "../interfaces/CategoryRepository.interface";
+import { ICategoryRepository } from "../interfaces/repositories/CategoryRepository.interface";
 
 import DataBase from '../db/connect';
+import logger from '../logger/logger';
 import { Categories } from "../db/entity/Category";
 import { Repository } from "typeorm/repository/Repository";
 
@@ -18,12 +19,24 @@ class CategoryRepository implements ICategoryRepository {
         });
     }
 
-    addCategory(category: Category) {
-        throw new Error("Method not implemented.");
+    async addCategory(category: Category): Promise<Boolean> {
+        try {
+            await this.categoryRepository.save(category);
+            return true;
+        } catch (err) {
+            logger.error(err);
+            return false;
+        }
     }
     
-    removeCategory(id_category: number) {
-        throw new Error("Method not implemented.");
+    async removeCategory(id_category: number) {
+        try {
+            await this.categoryRepository.delete(id_category);
+            return true;
+        } catch (err) {
+            logger.error(err);
+            return false;
+        }
     }
 
 }

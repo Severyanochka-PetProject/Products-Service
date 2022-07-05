@@ -1,10 +1,10 @@
-import { Category } from '../domain/Category';
+import { Category } from '../../domain/Category';
 
 export interface ICategoryRepository {
     /**
      * Получить список категорий
      */
-    getCategories(): ;
+    getCategories(): Promise<Category[]>;
 
     /**
      * Добавить категорию
@@ -12,7 +12,7 @@ export interface ICategoryRepository {
     addCategory(category: Category);
 
     /**
-     * Удалить категорию
+     * Удалить категорию по id
      * @param id_category
      */
     removeCategory(id_category: number);

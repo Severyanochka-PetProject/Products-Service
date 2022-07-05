@@ -1,5 +1,5 @@
 export interface Product {
-    id_food: string;
+    id_food?: string;
     name: string;
     description: string | null;
     price: string;

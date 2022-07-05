@@ -1,5 +1,5 @@
 import { Product } from '../domain/Product';
-import  {IProductRepository} from '../interfaces/ProductRepository.interface';
+import  {IProductRepository} from '../interfaces/repositories/ProductRepository.interface';
 
 export default class ProductRepository implements IProductRepository {
     getProducts() {
