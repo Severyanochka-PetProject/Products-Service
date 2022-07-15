@@ -15,7 +15,7 @@ DataBase.initialize()
     .then(() => {
         logger.info(`[OK] DataBase initialized`);
 
-        app.use(express.json())
+        app.use(express.json());
         app.use('/apiV1', router);
 
         app.listen(PORT, () => {

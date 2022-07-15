@@ -12,4 +12,7 @@ export class Categories extends BaseEntity {
         length: 100
     })
     name: string;
+
+    @Column()
+    img_hash: string;
 }

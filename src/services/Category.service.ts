@@ -11,14 +11,14 @@ class CategoryService {
 
     async addCategory(req, res) {
         const category: Category = req.body;
-   
+
         if (!Object.keys(category).length) {
             return res.status(400).json({ 
                 status: false,
                 msg: 'Body empty'
             })
         }
-
+        
         const status = await CategoryRepository.addCategory(category);
 
         res.status(200).json({ 
