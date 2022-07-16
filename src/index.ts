@@ -3,6 +3,7 @@ dotenv.config();
 
 import express, { Request, Response } from 'express';
 import "reflect-metadata";
+import cors from 'cors';
 
 import DataBase from './db/connect';
 import logger from './logger/logger';
@@ -14,6 +15,16 @@ const PORT = process.env.PORT || '5515';
 DataBase.initialize()
     .then(() => {
         logger.info(`[OK] DataBase initialized`);
+
+        app.use(cors({
+            origin: [
+                'http://localhost:3000',
+                'https://localhost:3000',
+                'https://tankistpro-food.ru',
+                'https://www.tankistpro-food.ru',
+              ],
+              credentials: true,
+        }))
 
         app.use(express.json());
         app.use('/product-apiV1', router);
