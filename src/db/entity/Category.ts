@@ -15,4 +15,9 @@ export class Categories extends BaseEntity {
 
     @Column()
     img_hash: string;
+
+    @Column({
+        length: 100
+    })
+    slag: string;
 }
