@@ -4,13 +4,13 @@ export interface IProductRepository {
     /**
      * Получение всех товаров
      */
-    getProducts();
+    getProducts(): Promise<Product[]>;
 
     /**
-     * Получение товаров по категории
+     * Получение товаров по категории (slag_name)
      * @param category 
      */
-    getProductsByCategory(category: string);
+    getProductsByCategory(slag_name: string);
 
     /**
      * Получение товара по id_products

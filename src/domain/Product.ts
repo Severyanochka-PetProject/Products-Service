@@ -1,9 +1,9 @@
 export interface Product {
-    id_food?: string;
+    id_food?: number;
     name: string;
-    description: string | null;
-    price: string;
-    discount: string | null;
+    description: string;
+    price: number;
+    discount: number;
     url: string;
     id_brand: number;
     id_manufacture: number;
