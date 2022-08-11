@@ -6,8 +6,8 @@ const router = Router();
 
 router.get("/", ProductService.getProducts);
 
-// router.post("/add-category", CategoryService.addCategory);
+router.post("/add-product", ProductService.addProduct);
 
-// router.delete("/remove-category", CategoryService.removeCategory);
+router.delete("/remove-product", ProductService.removeProduct);
 
 export default router;

@@ -8,25 +8,25 @@ export interface IProductRepository {
 
     /**
      * Получение товаров по категории (slag_name)
-     * @param category 
+     * @param id_category 
      */
-    getProductsByCategory(slag_name: string);
+     getProductsByCategoryId(id_category: number);
 
     /**
-     * Получение товара по id_products
-     * @param id_product 
+     * Получение товара по id_food
+     * @param id_food 
      */
-    getProductsById(id_product: number);
+    getProductById(id_food: number);
 
     /**
      * Добавление товара
      * @param product 
      */
-    addProduct(product: Product);
+    addProduct(product: Product): Promise<Boolean>;
 
     /**
-     * Удаление товара по id_product
-     * @param id_product 
+     * Удаление товара по id_food
+     * @param id_food 
      */
-    removeProduct(id_product: number);
+    removeProduct(id_food: number): Promise<Boolean>;
 }

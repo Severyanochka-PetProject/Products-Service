@@ -17,16 +17,44 @@ class ProductRepository implements IProductRepository {
         });
     }
     
-    getProductsByCategory(slag_name: string) {
-        throw new Error('Method not implemented.');
+    async getProductsByCategoryId(id_category: number): Promise<Product[]> {
+        try {
+            return await this.productRepository.find({
+                where: {
+                    id_category
+                }
+            })
+        } catch(err) {
+            return null
+        }
     }
-    getProductsById(id_product: number) {
-        throw new Error('Method not implemented.');
+
+    async getProductById(id_food: number): Promise<Product> {
+        try {
+            return await this.productRepository.findOneBy({
+                id_food
+            })
+        } catch(err) {
+            return null
+        }
     }
-    addProduct(product: Product) {
-        throw new Error('Method not implemented.');
+
+    async addProduct(product: Product): Promise<Boolean> {
+        try {
+            await this.productRepository.save(product);
+            return true;
+        } catch(err) {
+            return false;
+        }
     }
-    removeProduct(id_product: number) {
+
+    async removeProduct(id_food: number): Promise<Boolean> {
+        try {
+            await this.productRepository.delete(id_food);
+            return true;
+        } catch(err) {
+            return false;
+        }
         throw new Error('Method not implemented.');
     }
 }
