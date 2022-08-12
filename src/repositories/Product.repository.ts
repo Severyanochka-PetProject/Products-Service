@@ -13,7 +13,12 @@ class ProductRepository implements IProductRepository {
 
     async getProducts(): Promise<Food[]> {
         return await this.productRepository.find({
-            cache: true
+            cache: true,
+            relations: {
+                category: true,
+                brand: true,
+                manufacture: true
+            },
         });
     }
     
@@ -31,8 +36,13 @@ class ProductRepository implements IProductRepository {
 
     async getProductById(id_food: number): Promise<Product> {
         try {
-            return await this.productRepository.findOneBy({
-                id_food
+            return await this.productRepository.findOne({
+                where: {id_food},
+                relations: {
+                    category: true,
+                    brand: true,
+                    manufacture: true
+                },
             })
         } catch(err) {
             return null

@@ -2,6 +2,7 @@
 .env
 error.log
 combined.log
+.vs
 
 # Folders
 node_modules

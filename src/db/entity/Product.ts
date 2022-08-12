@@ -1,4 +1,7 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Brands } from "./Brand";
+import { Categories } from "./Category";
+import { Manufacture } from "./Manufacture";
 
 @Entity({
     name: "Food",
@@ -31,4 +34,16 @@ export class Food extends BaseEntity {
 
     @Column()
     id_category: number;
+
+    @OneToOne(() => Categories)
+    @JoinColumn({ name: "id_category" })
+    category: Categories
+
+    @OneToOne(() => Brands)
+    @JoinColumn({ name: "id_brand" })
+    brand: Brands
+
+    @OneToOne(() => Manufacture)
+    @JoinColumn({ name: "id_manufacture" })
+    manufacture: Manufacture
 }
