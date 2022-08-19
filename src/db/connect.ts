@@ -4,6 +4,7 @@ import { Food } from "./entity/Product";
 import { Categories } from "./entity/Category";
 import { Brands } from "./entity/Brand";
 import { Manufacture } from "./entity/Manufacture";
+import { Basket } from "./entity/Basket";
 
 const AppDataSource = new DataSource({
     type: 'postgres',
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
     username: process.env.DB_USERNAME,
     password: String(process.env.DB_PASSWORD),
     database: process.env.DB_DATABASE,
-    entities: [Food, Categories, Brands, Manufacture],
+    entities: [Food, Categories, Brands, Manufacture, Basket],
     synchronize: true,
 })
 
