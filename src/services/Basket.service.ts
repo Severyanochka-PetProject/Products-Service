@@ -40,6 +40,23 @@ class BasketService {
             status
         })
     }
+
+    async removeProductFromBasket(req, res) {
+        const {id_user, id_food} = req.body;
+
+        if (!id_user || !id_food) {
+            return res.status(400).json({ 
+                status: false,
+                msg: 'Bad body'
+            })
+        }
+
+        const status = await BasketRepository.removeProductFromBasket(id_user, id_food);
+
+        return res.status(200).json({
+            status
+        })
+    }
 }
 
 export default new BasketService();

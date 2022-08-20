@@ -45,6 +45,18 @@ class BasketRepository implements IBasketRepository {
             return false
         }
     }
+
+    async removeProductFromBasket(id_user: number, id_food: number): Promise<boolean> {
+        try {
+            await this.basketRepository.delete({
+                id_user,
+                id_food
+            })
+            return true
+        } catch (err) {
+            return false
+        }
+    }
 }
 
 export default new BasketRepository();

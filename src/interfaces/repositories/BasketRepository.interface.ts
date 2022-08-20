@@ -14,4 +14,11 @@ export interface IBasketRepository {
      * @param count 
      */
     addProductToBasket(id_user: number, id_food: number, count: number): Promise<boolean>;
+
+    /**
+     * Удаление продукта из корзины
+     * @param id_user 
+     * @param id_food 
+     */
+    removeProductFromBasket(id_user: number, id_food: number): Promise<boolean>;
 }
