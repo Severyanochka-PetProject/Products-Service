@@ -57,6 +57,23 @@ class BasketService {
             status
         })
     }
+
+    async updateBasketProduct(req, res) {
+        const {id_user, id_food, count} = req.body;
+
+        if (!id_user || !id_food || !count) {
+            return res.status(400).json({ 
+                status: false,
+                msg: 'Bad body'
+            })
+        }
+
+        const status = await BasketRepository.updateBasketProduct(id_user, id_food, count);
+
+        return res.status(200).json({
+            status
+        })
+    }
 }
 
 export default new BasketService();

@@ -10,4 +10,6 @@ router.post("/add-product-basket", BasketService.addProductToBasket);
 
 router.delete("/remove-product-basket", BasketService.removeProductFromBasket);
 
+router.patch("/update-product-basket", BasketService.updateBasketProduct);
+
 export default router;

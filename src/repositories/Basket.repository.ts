@@ -13,6 +13,21 @@ class BasketRepository implements IBasketRepository {
         this.basketRepository = DataBase.getRepository(BasketEntity);
     }
 
+    async updateBasketProduct(id_user: number, id_food: number, count: number): Promise<boolean> {
+        try {
+            const basketProduct = await this.basketRepository.findOne({
+                where: {id_user, id_food}
+            })
+
+            basketProduct.count = count;
+            this.basketRepository.save(basketProduct);
+            
+            return true
+        } catch (err) {
+            return false
+        }
+    }
+
     async getUserBasket(id_user: number): Promise<Basket[]> {
         try {
             return await this.basketRepository.find({
