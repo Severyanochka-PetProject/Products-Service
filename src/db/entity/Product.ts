@@ -35,6 +35,9 @@ export class Food extends BaseEntity {
     @Column()
     id_category: number;
 
+    @Column()
+    vendor_code: number;
+
     @OneToOne(() => Categories)
     @JoinColumn({ name: "id_category" })
     category: Categories
