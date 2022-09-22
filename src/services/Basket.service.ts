@@ -1,6 +1,5 @@
-import { Basket } from "../domain/Basket";
 import BasketRepository from "../repositories/Basket.repository";
-import { IBasketRepository } from "../interfaces/repositories/BasketRepository.interface";
+import { IProductListToBasket } from "../interfaces/index.interface";
 
 // TODO: Получение id_user из acess_token
 
@@ -9,7 +8,7 @@ class BasketService {
         const { id_user } = req.query;
 
         if (!id_user || !id_user.length) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 status: false,
                 msg: 'Body empty'
             })
@@ -28,7 +27,7 @@ class BasketService {
         const {id_user, id_food, count} = req.body;
 
         if (!id_user || !id_food || !count) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 status: false,
                 msg: 'Bad body'
             })
@@ -41,11 +40,28 @@ class BasketService {
         })
     }
 
+    async addRangeProductsToBasket(req, res) {
+        const {id_user, products}: {id_user: number, products: IProductListToBasket[]} = req.body;
+
+        if (!id_user || !products.length) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Bad body'
+            })
+        }
+
+        const status = await BasketRepository.addRangeProductsToBasket(id_user, products);
+
+        return res.status(200).json({
+            status
+        })
+    }
+
     async removeProductFromBasket(req, res) {
         const {id_user, id_food} = req.body;
 
         if (!id_user || !id_food) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 status: false,
                 msg: 'Bad body'
             })
@@ -62,7 +78,7 @@ class BasketService {
         const {id_user, id_food, count} = req.body;
 
         if (!id_user || !id_food || !count) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 status: false,
                 msg: 'Bad body'
             })
