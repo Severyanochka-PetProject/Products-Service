@@ -19,6 +19,22 @@ class ReviewRepository implements IReviewRepository{
             }
         })
     }
+
+    async getPagingReviews(id_food: number, page: number = 1, perPage: number = 5) {
+        const skip = (page * perPage) - perPage;
+
+        return await this.productRepository.find({
+            where: { id_food },
+            relations: {
+                product: true
+            },
+            take: perPage,
+            skip,
+            order: {
+                date: "DESC"
+            }
+        })
+    }
 }
 
 export default new ReviewRepository();
