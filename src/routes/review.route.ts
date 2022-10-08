@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import reviewService from '../services/review.service';
+import reviewService from '../services/Review.service';
 
 const router = Router();
 

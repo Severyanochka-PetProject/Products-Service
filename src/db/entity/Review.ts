@@ -1,5 +1,6 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Food } from "./Product";
+import { User } from "./User";
 
 @Entity({
     name: "Reviews",
@@ -29,4 +30,8 @@ export class Review extends BaseEntity {
     @OneToOne(() => Food)
     @JoinColumn({ name: "id_food" })
     product: Food;
+
+    @OneToOne(() => User)
+    @JoinColumn({ name: "id_user" })
+    user: User
 }

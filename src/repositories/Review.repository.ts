@@ -26,7 +26,17 @@ class ReviewRepository implements IReviewRepository{
         return await this.productRepository.find({
             where: { id_food },
             relations: {
-                product: true
+                product: true,
+                user: true
+            },
+            select: {
+                user: {
+                    id_user: true,
+                    first_name: true,
+                    last_name: true,
+                    phone_number: true,
+                    avatar_url: true,
+                }
             },
             take: perPage,
             skip,
